@@ -74,3 +74,6 @@ _sgbak/
 
 #idea folder
 .idea/
+
+#sonarlint folder
+.sonarlint/
