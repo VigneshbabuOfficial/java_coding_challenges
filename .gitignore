@@ -77,3 +77,4 @@ _sgbak/
 
 #sonarlint folder
 .sonarlint/
+*.gz
