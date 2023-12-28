@@ -12,6 +12,7 @@ Coding Challenges are dynamic exercises promoting skill growth in problem-solvin
 9. ### [Reverse a Number](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/ReverseNumberExample.java)
 10. ### [Swap Two Numbers](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/SwapTwoNumbers.java)
 11. ### [GCD](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/GCD.java)
+12. ### [LCM](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/LCM.java)
 
 
 
