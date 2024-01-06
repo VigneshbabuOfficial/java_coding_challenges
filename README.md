@@ -13,6 +13,7 @@ Coding Challenges are dynamic exercises promoting skill growth in problem-solvin
 10. ### [Swap Two Numbers](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/SwapTwoNumbers.java)
 11. ### [GCD](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/GCD.java)
 12. ### [LCM](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/LCM.java)
+13. ### [Largest among numbers](https://github.com/VigneshbabuOfficial/java_coding_challenges/blob/master/coding_challenges/src/others/LargestAmong3Numbers.java)
 
 
 
