@@ -15,7 +15,7 @@ public class PrintPatterns {
 
 		printPyramidStarPattern(5);
 		System.out.println("-------------------------------");
-		printPyramidStarPattern(5);
+		printPyramidStarPattern(8);
 		System.out.println("-------------------------------");
 
 		printDownwardPyramid(5);
@@ -193,7 +193,7 @@ public class PrintPatterns {
 	}
 
 	private static void printDiamondPatternBorder(final int rowCount) {
-		System.out.println("---------- printDownwardTriangleBorder for row = " + rowCount + " ----------- ");
+		System.out.println("---------- printDiamondPatternBorder for row = " + rowCount + " ----------- ");
 		for (int rowIndex = 1; rowIndex <= rowCount; rowIndex++) {
 			for (int spaceIndex = 1; spaceIndex <= rowCount - rowIndex; spaceIndex++) {
 				System.out.print(" ");
