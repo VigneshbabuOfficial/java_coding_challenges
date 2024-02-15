@@ -1,6 +1,8 @@
 package leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
@@ -13,12 +15,37 @@ public class Practice {
 		// ------------- FEB-14,2024 ----------------
 		// check valid pairs
 		// REF : https://leetcode.com/problems/valid-parentheses/description/
+		// status : SOLVED
 		isValidParenthesis("()");
 		isValidParenthesis("()[]{}");
 		isValidParenthesis("([])");
 		isValidParenthesis("([}])");
 
+		// ------------- FEB-15,2024 ----------------
+		// Remove Duplicates from Sorted Array
+		// REF : https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+		// status : throwing error in the output couldn't find the reason
+		removeDuplicates();
+		
+		// Remove Element
+		// REF : https://leetcode.com/problems/remove-element/description/
+		// status : 
+		removeElement();
+		
+	}
 
+	private static void removeElement() {
+		
+		int[] nums = { 3,2,2,1,5,8,3 };
+		int val = 3;
+		final int count = (int) Arrays.stream(nums).filter( e -> e != val ).count();
+		System.out.println(count);
+	}
+
+	private static void removeDuplicates() {
+		int[] nums = {1,2,3,2,3};
+		final List<Integer> uniqueList = Arrays.stream(nums).boxed().distinct().collect(Collectors.toList());
+		System.out.println(uniqueList);
 	}
 
 	private static boolean isValidParenthesis(String s) {
