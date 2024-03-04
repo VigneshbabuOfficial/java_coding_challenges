@@ -26,24 +26,78 @@ public class Practice {
 		// REF : https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 		// status : throwing error in the output couldn't find the reason
 		removeDuplicates();
-		
+
 		// Remove Element
 		// REF : https://leetcode.com/problems/remove-element/description/
-		// status : 
+		// status :
 		removeElement();
+
+		// ------------- FEB-28,2024 ----------------
+		// REF :
+		// https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
+		findTheIndexOfTheFirstOccurrenceInAString();
+		// status : DONE
+
+		// SEARCH INSERT POSITION :
+		// https://leetcode.com/problems/search-insert-position/description/
+		searchInsertPosition();
+		// status : DONE
 		
 	}
 
+	private static void searchInsertPosition() {
+		System.out.println(" -------- searchInsertPosition -------- ");
+		int[] nums = { 1, 3, 5, 6 };
+		System.out.println(searchInsert(nums, 5));
+		System.out.println(searchInsert(nums, 4));
+		System.out.println(searchInsert(nums, 2));
+		System.out.println(searchInsert(nums, 6));
+		System.out.println(searchInsert(nums, 9));
+	}
+
+	public static int searchInsert(int[] nums, int target) {
+		for (int index = 0; index < nums.length; index++) {
+
+			if (nums[index] >= target)
+				return index;
+
+			if (index == nums.length-1 && target > nums[index])
+				return index + 1;
+
+		}
+		return 0;
+	}
+
+	private static void findTheIndexOfTheFirstOccurrenceInAString() {
+		System.out.println(" -------- findTheIndexOfTheFirstOccurrenceInAString -------- ");
+		System.out.println(strStr("sadbutsad", "sad"));
+		System.out.println(strStr("leetcode", "leeto"));
+		System.out.println(strStr("hello", "ll"));
+		System.out.println(strStr("a", "a"));
+	}
+
+	public static int strStr(String haystack, String needle) {
+
+		int strLength = haystack.length();
+
+		for (int index = 0; index < strLength; index++) {
+			if (haystack.substring(index, strLength).startsWith(needle)) {
+				return index;
+			}
+		}
+		return -1;
+	}
+
 	private static void removeElement() {
-		
-		int[] nums = { 3,2,2,1,5,8,3 };
+
+		int[] nums = { 3, 2, 2, 1, 5, 8, 3 };
 		int val = 3;
-		final int count = (int) Arrays.stream(nums).filter( e -> e != val ).count();
+		final int count = (int) Arrays.stream(nums).filter(e -> e != val).count();
 		System.out.println(count);
 	}
 
 	private static void removeDuplicates() {
-		int[] nums = {1,2,3,2,3};
+		int[] nums = { 1, 2, 3, 2, 3 };
 		final List<Integer> uniqueList = Arrays.stream(nums).boxed().distinct().collect(Collectors.toList());
 		System.out.println(uniqueList);
 	}
