@@ -34,6 +34,7 @@ public class Practice {
 		// https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem?isFullScreen=true
 		System.out.println("----- Climbing Leader Board *** begins ------- ");
 		climbingLeaderboard();
+		// status : DONE but some test cases shows execution timeout exceeded
 		System.out.println("----- Climbing Leader Board *** ends ------- ");
 
 	}

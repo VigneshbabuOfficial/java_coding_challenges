@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,39 @@ public class Practice {
 		// https://leetcode.com/problems/search-insert-position/description/
 		searchInsertPosition();
 		// status : DONE
-		
+
+		// ------------- MAR-04,2024 ----------------
+		// Add Two Numbers : https://leetcode.com/problems/add-two-numbers/description/
+		addTwoNumbers();
+		// status : NOT DONE. As its output is ListNode
+
+	}
+
+	private static void addTwoNumbers() {
+		addTwoNumbers(Arrays.asList(2, 4, 3), Arrays.asList(5, 6, 4));
+		addTwoNumbers(Arrays.asList(0), Arrays.asList(0));
+		addTwoNumbers(Arrays.asList(9,9,9,9,9,9,9), Arrays.asList(9,9,9,9));
+	}
+
+	private static void addTwoNumbers(List<Integer> list_1, List<Integer> list_2) {
+
+		List<Integer> list_3 = new ArrayList<>();
+
+		int quotient = 0;
+
+		for (int i = 0; i < list_1.size(); i++) {
+			int sum = quotient + list_1.get(i) + ( i < list_2.size() ? list_2.get(i) : 0 );
+			if (sum >= 10) {
+				list_3.add(sum % 10);
+				quotient = sum / 10;
+			} else {
+				list_3.add(sum);
+				quotient = 0;
+			}
+		}
+		System.out.println( " list_1 = "+list_1);
+		System.out.println( " list_2 = "+list_2);
+		System.out.println( " list_3 = "+list_3);
 	}
 
 	private static void searchInsertPosition() {
@@ -61,7 +94,7 @@ public class Practice {
 			if (nums[index] >= target)
 				return index;
 
-			if (index == nums.length-1 && target > nums[index])
+			if (index == nums.length - 1 && target > nums[index])
 				return index + 1;
 
 		}
