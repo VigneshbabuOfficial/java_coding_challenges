@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,6 +38,28 @@ public class Practice {
 		// status : DONE but some test cases shows execution timeout exceeded
 		System.out.println("----- Climbing Leader Board *** ends ------- ");
 
+		// ------------- MAR-05,2024 ----------------
+		// Extra Long Factorial :
+		// https://www.hackerrank.com/challenges/extra-long-factorials/problem?isFullScreen=true
+		System.out.println("----- Extra Long Factorial *** begins ------- ");
+		extraLongFactorials();
+		System.out.println("----- Extra Long Factorial *** ends ------- ");
+
+	}
+
+	private static void extraLongFactorials() {
+
+		extraLongFactorials(25);
+	}
+
+	private static void extraLongFactorials(int n) {
+		BigInteger factorial = BigInteger.ONE;
+
+		for (int i = 2; i <= n; i++) {
+			factorial = factorial.multiply(BigInteger.valueOf(i));
+		}
+
+		System.out.println("factorial of " + n + " is " + factorial);
 	}
 
 	private static void climbingLeaderboard() {
@@ -46,7 +69,7 @@ public class Practice {
 
 	}
 
-	// optimized code by JAVA15 
+	// optimized code by JAVA15
 	public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
 		List<Integer> sortedRanked = new ArrayList<>(ranked);
 		sortedRanked.sort(Collections.reverseOrder());
