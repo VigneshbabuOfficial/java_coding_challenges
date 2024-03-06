@@ -43,8 +43,51 @@ public class Practice {
 		// https://www.hackerrank.com/challenges/extra-long-factorials/problem?isFullScreen=true
 		System.out.println("----- Extra Long Factorial *** begins ------- ");
 		extraLongFactorials();
+		// status : DONE
 		System.out.println("----- Extra Long Factorial *** ends ------- ");
 
+		// ------------- MAR-06,2024 ----------------
+		// Camel Case :
+		// https://www.hackerrank.com/challenges/camelcase/problem?isFullScreen=true
+		System.out.println("----- Camel Case *** begins ------- ");
+		camelcase();
+		// status : SUCCESS
+		System.out.println("----- Camel Case *** ends ------- ");
+	}
+
+	private static void camelcase() {
+		camelcase("saveChangesInTheEditor");
+	}
+
+	public static int camelcase(String s) {
+		// A - Z = 65 - 90
+		// a - z = 97 - 122
+
+		int asciiVal = 0;
+		Character ch = null;
+		List<String> wordList = new ArrayList<>();
+		StringBuilder sb = new StringBuilder("");
+		
+		for (int index = 0; index < s.length(); index++) {
+			
+			ch = s.charAt(index);
+			asciiVal = (int) ch;
+			
+			if ( asciiVal >= 65 && asciiVal <= 90  ) {
+				// System.out.println("CAPS");
+				wordList.add(sb.toString());
+				sb.setLength(0);
+				sb.append(ch);
+			}else if ( asciiVal >= 97 && asciiVal <= 122 ) {
+				// System.out.println("LOWER");
+				sb.append(ch);
+			}
+		}
+		wordList.add(sb.toString());
+		
+		System.out.println(s+" has "+wordList.size()+" words. And the words are "+wordList);
+		
+		return wordList.size();
 	}
 
 	private static void extraLongFactorials() {

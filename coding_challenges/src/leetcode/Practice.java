@@ -3,8 +3,10 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -49,12 +51,53 @@ public class Practice {
 		addTwoNumbers();
 		// status : NOT DONE. As its output is ListNode
 
+		// ------------- MAR-05,2024 ----------------
+		// Longest substring without repeating characters :
+		// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+		System.out.println("----- Longest substring without repeating characters *** begins ------- ");
+		lengthOfLongestSubstring();
+		// status : pending
+		System.out.println("----- Longest substring without repeating characters *** ends ------- ");
+
+	}
+
+	private static void lengthOfLongestSubstring() {
+//		System.out.println("abcd1233444".startsWith("abcd"));
+		lengthOfLongestSubstring("abcabcbb");
+
+	}
+
+	public static int lengthOfLongestSubstring(String s) {
+
+		if (s == null || s.length() == 0) {
+			return 0;
+		}
+
+		Set<Character> set = new HashSet<>();
+		int maxLen = 0;
+		int left = 0;
+		int right = 0;
+
+		while (right < s.length()) {
+			if (!set.contains(s.charAt(right))) {
+				set.add(s.charAt(right));
+				maxLen = Math.max(maxLen, set.size());
+				right++;
+			} else {
+				set.remove(s.charAt(left));
+				left++;
+			}
+		}
+
+		System.out.println(" string = " + s + " set = " + set + ", max length = " + maxLen);
+
+		return maxLen;
 	}
 
 	private static void addTwoNumbers() {
 		addTwoNumbers(Arrays.asList(2, 4, 3), Arrays.asList(5, 6, 4));
 		addTwoNumbers(Arrays.asList(0), Arrays.asList(0));
-		addTwoNumbers(Arrays.asList(9,9,9,9,9,9,9), Arrays.asList(9,9,9,9));
+		addTwoNumbers(Arrays.asList(9, 9, 9, 9, 9, 9, 9), Arrays.asList(9, 9, 9, 9));
 	}
 
 	private static void addTwoNumbers(List<Integer> list_1, List<Integer> list_2) {
@@ -64,7 +107,7 @@ public class Practice {
 		int quotient = 0;
 
 		for (int i = 0; i < list_1.size(); i++) {
-			int sum = quotient + list_1.get(i) + ( i < list_2.size() ? list_2.get(i) : 0 );
+			int sum = quotient + list_1.get(i) + (i < list_2.size() ? list_2.get(i) : 0);
 			if (sum >= 10) {
 				list_3.add(sum % 10);
 				quotient = sum / 10;
@@ -73,9 +116,9 @@ public class Practice {
 				quotient = 0;
 			}
 		}
-		System.out.println( " list_1 = "+list_1);
-		System.out.println( " list_2 = "+list_2);
-		System.out.println( " list_3 = "+list_3);
+		System.out.println(" list_1 = " + list_1);
+		System.out.println(" list_2 = " + list_2);
+		System.out.println(" list_3 = " + list_3);
 	}
 
 	private static void searchInsertPosition() {
