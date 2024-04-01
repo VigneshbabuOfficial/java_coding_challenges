@@ -1,7 +1,14 @@
 package others;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Practice {
 
@@ -16,7 +23,128 @@ public class Practice {
 		palidrome();
 		primeNumber();
 		printPatterns();
+		convertDates();
 
+//	DONE	#1 find the highest word occurrence in a given paragraph
+		findHighestOccurenceOfAword();
+
+//	DONE	#2 find the least word occurrence in a given paragraph
+		findLeastWordOccurence();
+
+//	DONE	#3 find the longest words in a given paragraph
+		findLongestWordInParagraph();
+
+//	DONE	#4 finding the smallest words in a given paragraph
+		findSmallestWordInParagraph();
+
+//		  #5 find the most repeating letter in a word
+
+//		  #6 find the least repeating letter in a word
+
+//		  #7 longest substring without repeating character
+
+//		  #8 smallest substring without repeating character
+
+	}
+
+	private static void findSmallestWordInParagraph() {
+		
+		System.out.println("------------ findSmallestWordInParagraph -------------------");
+		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
+
+		String[] wordArr = paragraph.split(" ");
+
+		Map<String, Integer> wordMap = Arrays.stream(wordArr).distinct()
+				.collect(Collectors.toMap(String::valueOf, String::length));
+		System.out.println(wordMap);
+		
+		
+		Integer smallestWordLength = wordMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
+		
+		List<Entry<String, Integer>> smallestWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == smallestWordLength).toList();
+		System.out.println(" smallest word list = " + smallestWordList);
+	}
+
+	private static void findLeastWordOccurence() {
+		System.out.println("------------ findLeastWordOccurence -------------------");
+		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
+
+		String[] wordArr = paragraph.split(" ");
+
+		Map<String, Long> wordMap = Arrays.stream(wordArr)
+				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
+		System.out.println(wordMap);
+		
+		Long leastWordOccurenceCount = wordMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
+		System.out.println(" least occured words count = " + leastWordOccurenceCount);
+		
+		List<String> leastOccurenceWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == leastWordOccurenceCount).map(Map.Entry::getKey).toList();
+		System.out.println(" least occured word list = " + leastOccurenceWordList);
+
+	}
+
+	private static void findLongestWordInParagraph() {
+		System.out.println("------------ findLongestWordInParagraph -------------------");
+		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
+
+		String[] wordArr = paragraph.split(" ");
+
+		Map<String, Integer> wordLengthMap = Arrays.stream(wordArr).distinct()
+				.collect(Collectors.toMap(String::valueOf, String::length));
+		System.out.println(" words length = " + wordLengthMap);
+
+		Integer longestWordLength = wordLengthMap.entrySet().stream().max(Map.Entry.comparingByValue())
+				.map(Map.Entry::getValue).orElse(null);
+		System.out.println(" longest word length = " + longestWordLength);
+		List<String> longestWordList = wordLengthMap.entrySet().stream().filter(a -> a.getValue() == longestWordLength)
+				.map(Map.Entry::getKey).toList();
+		System.out.println(" longest word list = " + longestWordList);
+	}
+
+	private static void findHighestOccurenceOfAword() {
+		System.out.println("------------ fidingHighestOccurenceOfAword -------------------");
+		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
+
+		String[] wordArr = paragraph.split(" ");
+		System.out.println(Arrays.toString(wordArr));
+
+		Map<String, Long> wordMap = Arrays.stream(wordArr)
+				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
+		System.out.println(wordMap);
+
+		String commonWord = wordMap.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey)
+				.orElse(null);
+		System.out.println("most common word = " + commonWord);
+
+		Long mostCommonWordCount = wordMap.entrySet().stream().max(Map.Entry.comparingByValue())
+				.map(Map.Entry::getValue).orElse(0L);
+		List<String> mostCommonWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == mostCommonWordCount)
+				.map(Map.Entry::getKey).distinct().toList();
+		System.out.println("most common word count = " + mostCommonWordCount);
+		System.out.println("most common word list = " + mostCommonWordList);
+
+		String secondCommonWord = wordMap.entrySet().stream()
+				.sorted(Map.Entry.<String, Long>comparingByValue().reversed()).skip(1).findFirst()
+				.map(Map.Entry::getKey).orElse(null);
+		System.out.println("second most common word = " + secondCommonWord);
+		// another way
+		String secondMostCommonWord = mostCommonWordList.stream().sorted().skip(1).findFirst().get();
+		System.out.println("second most common word = " + secondMostCommonWord);
+
+	}
+
+	private static void convertDates() {
+		System.out.println("------------ convertDates -------------------");
+		String[] dates = { "17-Dec-80", "20-Feb-81", };
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MMM-yy");
+		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		for (String inputDate : dates) {
+
+			LocalDate date = LocalDate.parse(inputDate, inputFormatter);
+			String formattedDate = date.format(outputFormatter);
+			System.out.println(inputDate + " - " + formattedDate);
+		}
 	}
 
 	private static void printPatterns() {
@@ -331,7 +459,6 @@ public class Practice {
 		System.out.println("------------ Diamond With Numbers -------------------");
 		printDiamondWithNumbers(8);
 
-		
 // @formatter:off
 /*
 
@@ -354,10 +481,10 @@ public class Practice {
 
 	private static void printRightTriangleWithNumberPattern_1_reverse(int limit) {
 		int num;
-		for( int rowIndex = 1; rowIndex <= limit; rowIndex++ ) {
+		for (int rowIndex = 1; rowIndex <= limit; rowIndex++) {
 			num = rowIndex;
-			for( int numIndex = 1; numIndex <= rowIndex; numIndex++ ) {
-				System.out.print(" "+num--);
+			for (int numIndex = 1; numIndex <= rowIndex; numIndex++) {
+				System.out.print(" " + num--);
 			}
 			System.out.println();
 		}

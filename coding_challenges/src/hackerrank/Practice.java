@@ -53,6 +53,41 @@ public class Practice {
 		camelcase();
 		// status : SUCCESS
 		System.out.println("----- Camel Case *** ends ------- ");
+
+		// ------------- APR-01,2024 ----------------
+		// sub array division :
+		// https://www.hackerrank.com/challenges/the-birthday-bar/problem?isFullScreen=true
+		System.out.println("----- sub array division *** begins ------- ");
+		subArrayDivision();
+		// status : SUCCESS
+		System.out.println("----- sub array division *** ends ------- ");
+	}
+
+	private static void subArrayDivision() {
+		birthday(Arrays.asList(2, 2, 1, 3, 2), 4, 2);
+		birthday(Arrays.asList(1,2,1,3,2), 3, 2);
+		birthday(Arrays.asList(1,1,1,1,1,1), 3, 2);
+		birthday(Arrays.asList(4), 4, 1);
+	}
+
+	private static void birthday(List<Integer> s, int d, int m) {
+
+		int sum = 0;
+		int result = 0;
+		for (int i = 0; i < s.size(); i++) {
+			for (int j = 0; j < m && i+j < s.size(); j++) {
+				sum += s.get(i+j);
+			}
+			if (sum == d) {
+				result++;
+			}
+			sum = 0;
+		}
+		System.out.println("subArrayDivision"+" s = "+s+", d = "+d+", m = "+m+", result is = "+result);
+	}
+
+	private static void miniMaxSum() {
+		miniMaxSum(Arrays.asList(1, 2, 3, 4, 5));
 	}
 
 	private static void camelcase() {
@@ -67,26 +102,26 @@ public class Practice {
 		Character ch = null;
 		List<String> wordList = new ArrayList<>();
 		StringBuilder sb = new StringBuilder("");
-		
+
 		for (int index = 0; index < s.length(); index++) {
-			
+
 			ch = s.charAt(index);
 			asciiVal = (int) ch;
-			
-			if ( asciiVal >= 65 && asciiVal <= 90  ) {
+
+			if (asciiVal >= 65 && asciiVal <= 90) {
 				// System.out.println("CAPS");
 				wordList.add(sb.toString());
 				sb.setLength(0);
 				sb.append(ch);
-			}else if ( asciiVal >= 97 && asciiVal <= 122 ) {
+			} else if (asciiVal >= 97 && asciiVal <= 122) {
 				// System.out.println("LOWER");
 				sb.append(ch);
 			}
 		}
 		wordList.add(sb.toString());
-		
-		System.out.println(s+" has "+wordList.size()+" words. And the words are "+wordList);
-		
+
+		System.out.println(s + " has " + wordList.size() + " words. And the words are " + wordList);
+
 		return wordList.size();
 	}
 
@@ -253,7 +288,7 @@ public class Practice {
 		int maxSum = arr.stream().sorted().skip(1).mapToInt(Integer::intValue).sum();
 		int minSum = arr.stream().sorted((a, b) -> b.compareTo(a)).skip(1).mapToInt(Integer::intValue).sum();
 
-		System.out.println(minSum + " " + maxSum);
+		System.out.println("miniMaxSum = " + minSum + " " + maxSum);
 
 		// another way of solution
 		int sum = arr.stream().mapToInt(Integer::intValue).sum();
@@ -261,7 +296,16 @@ public class Practice {
 
 		int minSum_1 = sum - numList.get(4);
 		int maxSum_1 = sum - numList.get(0);
-		System.out.println(minSum_1 + " " + maxSum_1);
+		System.out.println("miniMaxSum = " + minSum_1 + " " + maxSum_1);
+
+		int totalSum = arr.stream().mapToInt(Integer::intValue).sum();
+		int min = arr.stream().mapToInt(Integer::intValue).min().getAsInt();
+		int max = arr.stream().mapToInt(Integer::intValue).max().getAsInt();
+
+		int minSum_2 = totalSum - max;
+		int maxSum_2 = totalSum - min;
+
+		System.out.println(minSum_2 + " " + maxSum_2);
 	}
 
 }
