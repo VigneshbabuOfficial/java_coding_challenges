@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Practice {
 
@@ -61,12 +62,37 @@ public class Practice {
 		subArrayDivision();
 		// status : SUCCESS
 		System.out.println("----- sub array division *** ends ------- ");
+
+		// ------------- APR-03,2024 ----------------
+		// sock merchant - sales by match :
+		// https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true
+		System.out.println("----- sock merchant - sales by match *** begins ------- ");
+		sockMerchant();
+		// status : SUCCESS
+		System.out.println("----- sock merchant - sales by match *** ends ------- ");
+	}
+
+	private static void sockMerchant() {
+		sockMerchant(Arrays.asList(1, 2, 1, 2, 1, 3, 2));
+		sockMerchant(Arrays.asList(10, 20, 20, 10, 10, 30, 50, 10, 20));
+	}
+
+	public static int sockMerchant(List<Integer> ar) {
+		Map<Integer, Long> countMap = ar.stream()
+				.collect(Collectors.groupingBy(Integer::intValue, Collectors.counting()));
+
+		int pairsCount = 0;
+		for (Map.Entry<Integer, Long> entry : countMap.entrySet()) {
+			pairsCount += (entry.getValue() / 2);
+		}
+		System.out.println(" numbers = " + ar + " countMap = " + countMap + ", pairsCount = " + pairsCount);
+		return pairsCount;
 	}
 
 	private static void subArrayDivision() {
 		birthday(Arrays.asList(2, 2, 1, 3, 2), 4, 2);
-		birthday(Arrays.asList(1,2,1,3,2), 3, 2);
-		birthday(Arrays.asList(1,1,1,1,1,1), 3, 2);
+		birthday(Arrays.asList(1, 2, 1, 3, 2), 3, 2);
+		birthday(Arrays.asList(1, 1, 1, 1, 1, 1), 3, 2);
 		birthday(Arrays.asList(4), 4, 1);
 	}
 
@@ -75,15 +101,15 @@ public class Practice {
 		int sum = 0;
 		int result = 0;
 		for (int i = 0; i < s.size(); i++) {
-			for (int j = 0; j < m && i+j < s.size(); j++) {
-				sum += s.get(i+j);
+			for (int j = 0; j < m && i + j < s.size(); j++) {
+				sum += s.get(i + j);
 			}
 			if (sum == d) {
 				result++;
 			}
 			sum = 0;
 		}
-		System.out.println("subArrayDivision"+" s = "+s+", d = "+d+", m = "+m+", result is = "+result);
+		System.out.println("subArrayDivision" + " s = " + s + ", d = " + d + ", m = " + m + ", result is = " + result);
 	}
 
 	private static void miniMaxSum() {

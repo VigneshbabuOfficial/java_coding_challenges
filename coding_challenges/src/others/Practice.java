@@ -14,6 +14,7 @@ public class Practice {
 
 	public static void main(String[] args) {
 
+// ------------------ JAVATPOINT problems ----------------------- 
 		praciceArmstrongNumber();
 		practiceAutomorphicNumber();
 		getFactorial();
@@ -25,21 +26,22 @@ public class Practice {
 		printPatterns();
 		convertDates();
 
+// ------------------- frequently asked problems -----------------
 //	DONE	#1 find the highest word occurrence in a given paragraph
 		findHighestOccurenceOfAword();
-
 //	DONE	#2 find the least word occurrence in a given paragraph
 		findLeastWordOccurence();
-
+// ------------- APR-02, 2024 ----------------
 //	DONE	#3 find the longest words in a given paragraph
 		findLongestWordInParagraph();
-
 //	DONE	#4 finding the smallest words in a given paragraph
 		findSmallestWordInParagraph();
-
-//		  #5 find the most repeating letter in a word
-
-//		  #6 find the least repeating letter in a word
+// ------------- APR-03, 2024 ----------------
+//	DONE    #5 find the most repeating letter in a word
+		findMostRepeatingLetter();
+//	DONE	#6 find the least / non repeating letter in a word
+		findNonRepeatingLetter();
+//	DONE	#6.1 find the second least / non repeating letter in a word
 
 //		  #7 longest substring without repeating character
 
@@ -47,8 +49,69 @@ public class Practice {
 
 	}
 
+	private static void findNonRepeatingLetter() {
+		System.out.println("------------ findNonRepeatingLetter -------------------");
+		findNonRepeatingLetter("apple");
+		System.out.println("-------------------------------");
+		findNonRepeatingLetter("vignesh");
+		System.out.println("-------------------------------");
+		findNonRepeatingLetter("aaabbccdddef");
+	}
+
+	private static void findNonRepeatingLetter(String word) {
+		String[] wordArr = word.split("");
+		Map<String, Long> lettersCountMap = Arrays.stream(wordArr)
+				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
+		// non repeating means value should be 1 or minimum
+//		Long minCount = lettersCountMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
+		Long minCount = lettersCountMap.values().stream().min(Long::compare).get();
+		List<String> minCounLetterList = lettersCountMap.entrySet().stream().filter(a -> a.getValue().equals(minCount))
+				.map(Map.Entry::getKey).toList();
+		System.out.println("lettersCountMap = " + lettersCountMap + " , minCount = " + minCount
+				+ " , minCounLetterList = " + minCounLetterList);
+
+		// find the second least / non repeating letter in a word
+		if (lettersCountMap.values().stream().distinct().count() > 1L) {
+			Long secondLeastRepeatedCount = lettersCountMap.values().stream().distinct()
+					.sorted((a, b) -> b.compareTo(a)).skip(1).findFirst().get();
+			lettersCountMap.values().stream().sorted((a, b) -> b.compareTo(a)).distinct().forEach(System.out::print);
+			System.out.println();
+			List<String> secondMinimumCountLetterList = lettersCountMap.entrySet().stream()
+					.filter(a -> a.getValue().equals(secondLeastRepeatedCount)).map(Map.Entry::getKey).toList();
+			System.out.println("lettersCountMap = " + lettersCountMap + " , secondLeastRepeatedCount = "
+					+ secondLeastRepeatedCount + " , secondMinimumCountLetterList = " + secondMinimumCountLetterList);
+		}else {
+			System.out.println("since all the element has same count value there is no second minimum");
+		}
+	}
+
+	private static void findMostRepeatingLetter() {
+		System.out.println("------------ findMostRepeatingLetter -------------------");
+
+		findMostRepeatingLetter("apple");
+		System.out.println("------------ -------------------");
+		findMostRepeatingLetter("vigneshbabu");
+	}
+
+	private static void findMostRepeatingLetter(String word) {
+
+		String[] wordArr = word.split("");
+
+		Map<String, Long> lettersCountMap = Arrays.stream(wordArr)
+				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
+		Long maxCount = lettersCountMap.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getValue)
+				.orElse(null);
+		List<Entry<String, Long>> mostRepeatedLetterList = lettersCountMap.entrySet().stream()
+				.filter(a -> a.getValue().equals(maxCount)).toList();
+		List<String> mostRepeatedLetterList_1 = lettersCountMap.entrySet().stream()
+				.filter(a -> a.getValue().equals(maxCount)).map(Map.Entry::getKey).toList();
+		System.out.println(
+				"lettersCountMap = " + lettersCountMap + " , maxCount = " + maxCount + " , mostRepeatedLetterList = "
+						+ mostRepeatedLetterList + " , mostRepeatedLetterList_1 = " + mostRepeatedLetterList_1);
+	}
+
 	private static void findSmallestWordInParagraph() {
-		
+
 		System.out.println("------------ findSmallestWordInParagraph -------------------");
 		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
 
@@ -57,11 +120,12 @@ public class Practice {
 		Map<String, Integer> wordMap = Arrays.stream(wordArr).distinct()
 				.collect(Collectors.toMap(String::valueOf, String::length));
 		System.out.println(wordMap);
-		
-		
-		Integer smallestWordLength = wordMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
-		
-		List<Entry<String, Integer>> smallestWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == smallestWordLength).toList();
+
+		Integer smallestWordLength = wordMap.entrySet().stream().min(Map.Entry.comparingByValue())
+				.map(Map.Entry::getValue).orElse(null);
+
+		List<Entry<String, Integer>> smallestWordList = wordMap.entrySet().stream()
+				.filter(a -> a.getValue() == smallestWordLength).toList();
 		System.out.println(" smallest word list = " + smallestWordList);
 	}
 
@@ -74,11 +138,13 @@ public class Practice {
 		Map<String, Long> wordMap = Arrays.stream(wordArr)
 				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
 		System.out.println(wordMap);
-		
-		Long leastWordOccurenceCount = wordMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
+
+		Long leastWordOccurenceCount = wordMap.entrySet().stream().min(Map.Entry.comparingByValue())
+				.map(Map.Entry::getValue).orElse(null);
 		System.out.println(" least occured words count = " + leastWordOccurenceCount);
-		
-		List<String> leastOccurenceWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == leastWordOccurenceCount).map(Map.Entry::getKey).toList();
+
+		List<String> leastOccurenceWordList = wordMap.entrySet().stream()
+				.filter(a -> a.getValue() == leastWordOccurenceCount).map(Map.Entry::getKey).toList();
 		System.out.println(" least occured word list = " + leastOccurenceWordList);
 
 	}
