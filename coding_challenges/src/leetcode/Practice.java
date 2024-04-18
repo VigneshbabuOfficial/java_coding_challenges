@@ -59,6 +59,41 @@ public class Practice {
 		// status : pending
 		System.out.println("----- Longest substring without repeating characters *** ends ------- ");
 
+		// ------------- APR-18,2024 ----------------
+		// Difficulty : EASY
+		// Length of Last Word :
+		// https://leetcode.com/problems/length-of-last-word/description/
+		System.out.println("----- Length of Last Word *** begins ------- ");
+		lengthOfLastWord();
+		// status : Accepted & Success
+		System.out.println("----- Length of Last Word *** ends ------- ");
+
+		// Difficulty : MEDIUM
+		// Zigzag Conversion :
+		// https://leetcode.com/problems/zigzag-conversion/description/
+		System.out.println("----- Zigzag Conversion *** begins ------- ");
+		printZigZagPattern(5);
+		// status : Pending
+		System.out.println("----- Zigzag Conversion *** ends ------- ");
+
+	}
+
+	public static void printZigZagPattern(int n) {
+
+		for (int i = 1; i <= n; i++) {
+
+		}
+	}
+
+	private static void lengthOfLastWord() {
+		lengthOfLastWord("Hello World");
+	}
+
+	public static int lengthOfLastWord(String s) {
+		String[] wordArr = Arrays.stream(s.split(" ")).filter(str -> str.trim().length() > 0).toArray(String[]::new);
+		int lengthOfLastword = wordArr[wordArr.length - 1].length();
+		System.out.println(" lengthOfLastWord = " + lengthOfLastword);
+		return lengthOfLastword;
 	}
 
 	private static void lengthOfLongestSubstring() {
