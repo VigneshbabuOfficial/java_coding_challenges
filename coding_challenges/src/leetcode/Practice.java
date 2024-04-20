@@ -60,21 +60,23 @@ public class Practice {
 		System.out.println("----- Longest substring without repeating characters *** ends ------- ");
 
 		// ------------- APR-18,2024 ----------------
-		// Difficulty : EASY
 		// Length of Last Word :
 		// https://leetcode.com/problems/length-of-last-word/description/
+		// Difficulty : EASY
+		// status : Accepted & Success
 		System.out.println("----- Length of Last Word *** begins ------- ");
 		lengthOfLastWord();
-		// status : Accepted & Success
 		System.out.println("----- Length of Last Word *** ends ------- ");
 
-		// Difficulty : MEDIUM
 		// Zigzag Conversion :
 		// https://leetcode.com/problems/zigzag-conversion/description/
+		// Difficulty : MEDIUM
+		// status : Pending
 		System.out.println("----- Zigzag Conversion *** begins ------- ");
 		printZigZagPattern(5);
-		// status : Pending
 		System.out.println("----- Zigzag Conversion *** ends ------- ");
+
+		
 
 	}
 

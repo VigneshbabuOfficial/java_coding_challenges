@@ -70,6 +70,99 @@ public class Practice {
 		sockMerchant();
 		// status : SUCCESS
 		System.out.println("----- sock merchant - sales by match *** ends ------- ");
+
+		// ------------- APR-20,2024 ----------------
+		// Bill Division :
+		// https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- Bill Division *** begins ------- ");
+		bonAppetit();
+		System.out.println("----- Bill Division *** ends ------- ");
+
+		// chat-gpt solved problem
+		// Between Two Sets :
+		// https://www.hackerrank.com/challenges/between-two-sets/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- Between Two Sets *** begins ------- ");
+		getTotalX();
+		System.out.println("----- Between Two Sets *** ends ------- ");
+	}
+
+	private static void getTotalX() {
+		getTotalX(Arrays.asList(2,4), Arrays.asList(16,32,96));
+	}
+	
+	public static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static int lcm(int a, int b) {
+        return a * (b / gcd(a, b));
+    }
+
+
+	public static int getTotalX(List<Integer> a, List<Integer> b) {
+		int lcmA = a.get(0);
+        for (int i = 1; i < a.size(); i++) {
+            lcmA = lcm(lcmA, a.get(i));
+        }
+
+        int gcdB = b.get(0);
+        for (int i = 1; i < b.size(); i++) {
+            gcdB = gcd(gcdB, b.get(i));
+        }
+
+        int count = 0;
+        for (int i = lcmA, j = 2; i <= gcdB; i = lcmA * j, j++) {
+            if (gcdB % i == 0) {
+                count++;
+            }
+        }
+        System.out.println(count);
+        return count;
+
+	}
+
+	private static void bonAppetit() {
+		List<Integer> billItems = Arrays.asList(3, 10, 2, 9);
+		int billAnnaNoNeedToPay = 1; // 0 based index
+		int annaCharged = 12;
+		bonAppetit(billItems, billAnnaNoNeedToPay, annaCharged);
+		bonAppetit(billItems, billAnnaNoNeedToPay, 7);
+	}
+
+	public static void bonAppetit(List<Integer> bill, int k, int b) {
+		int sum = bill.stream().filter(bi -> bill.indexOf(bi) != k).mapToInt(Integer::intValue).sum();
+		int shareAmount = sum / 2;
+		String annaOverCharged = b == shareAmount ? "Bon Appetit" : b - shareAmount + "";
+		System.out.println("bill = " + bill + ", k = " + k + ", b = " + b + ", sum = " + sum + ", shareAmount = "
+				+ shareAmount + ", annaOverCharged = " + annaOverCharged);
+		// 2/7 test cases failed for the above solution
+
+		// chat-gpt solution
+		int n = bill.size();
+		// Step 2: Calculate Shared Cost
+		int sharedCost = 0;
+		for (int i = 0; i < n; i++) {
+			if (i != k) {
+				sharedCost += bill.get(i);
+			}
+		}
+		// Step 3: Calculate Actual and Charged Amounts
+		int b_actual = sharedCost / 2;
+		// Step 4: Check if Charged Amount is Correct
+		if (b == b_actual) {
+			System.out.println("Bon Appetit");
+		} else {
+			System.out.println(b - b_actual);
+		}
 	}
 
 	private static void sockMerchant() {
