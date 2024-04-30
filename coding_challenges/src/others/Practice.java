@@ -80,14 +80,13 @@ public class Practice {
 					.filter(a -> a.getValue().equals(secondLeastRepeatedCount)).map(Map.Entry::getKey).toList();
 			System.out.println("lettersCountMap = " + lettersCountMap + " , secondLeastRepeatedCount = "
 					+ secondLeastRepeatedCount + " , secondMinimumCountLetterList = " + secondMinimumCountLetterList);
-		}else {
+		} else {
 			System.out.println("since all the element has same count value there is no second minimum");
 		}
 	}
 
 	private static void findMostRepeatingLetter() {
 		System.out.println("------------ findMostRepeatingLetter -------------------");
-
 		findMostRepeatingLetter("apple");
 		System.out.println("------------ -------------------");
 		findMostRepeatingLetter("vigneshbabu");

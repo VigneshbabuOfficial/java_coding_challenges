@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
@@ -88,45 +89,113 @@ public class Practice {
 		System.out.println("----- Between Two Sets *** begins ------- ");
 		getTotalX();
 		System.out.println("----- Between Two Sets *** ends ------- ");
+
+		// ------------- APR-25,2024 ----------------
+		// Electronics Shop :
+		// https://www.hackerrank.com/challenges/electronics-shop/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- Electronics Shop *** begins ------- ");
+		getMoneySpent();
+		System.out.println("----- Electronics Shop *** ends ------- ");
+
+		// ------------- APR-30,2024 ----------------
+		// Picking Numbers :
+		// https://www.hackerrank.com/challenges/picking-numbers/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		// DONE BY CHAT-GPT
+		System.out.println("----- Picking Numbers *** begins ------- ");
+		pickingNumbers();
+		System.out.println("----- Picking Numbers *** ends ------- ");
+	}
+
+	private static void pickingNumbers() {
+		pickingNumbers();
+
+	}
+
+	public static int pickingNumbers(List<Integer> a) {
+		// Create a frequency map to count the occurrence of each unique number
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : a) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        int maxLength = 0;
+        // Iterate through the frequency map
+        for (int num : frequencyMap.keySet()) {
+            int currentLength = frequencyMap.get(num); // Frequency of the current number
+            int nextLength = frequencyMap.getOrDefault(num + 1, 0); // Frequency of the next number (num + 1)
+            int totalLength = currentLength + nextLength; // Total length of subarray
+            // Update maxLength if the totalLength is greater
+            if (totalLength > maxLength) {
+                maxLength = totalLength;
+            }
+        }
+        return maxLength;
+	}
+
+	private static void getMoneySpent() {
+		int[] keyboards = { 3, 1 };
+		int[] drives = { 5, 2, 8 };
+		int budget = 10;
+		getMoneySpent(keyboards, drives, budget);
+	}
+
+	private static int getMoneySpent(int[] keyboards, int[] drives, int budget) {
+		Arrays.sort(keyboards);
+		Arrays.sort(drives);
+
+		int maxCost = -1;
+		for (int keyboard : keyboards) {
+			for (int drive : drives) {
+				int totalCost = keyboard + drive;
+				if (totalCost <= budget && totalCost > maxCost) {
+					maxCost = totalCost;
+				}
+			}
+		}
+		System.out.println("maxCost = " + maxCost);
+		return maxCost;
 	}
 
 	private static void getTotalX() {
-		getTotalX(Arrays.asList(2,4), Arrays.asList(16,32,96));
+		getTotalX(Arrays.asList(2, 4), Arrays.asList(16, 32, 96));
 	}
-	
+
 	public static int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
+		while (b != 0) {
+			int temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return a;
+	}
 
-    public static int lcm(int a, int b) {
-        return a * (b / gcd(a, b));
-    }
-
+	public static int lcm(int a, int b) {
+		return a * (b / gcd(a, b));
+	}
 
 	public static int getTotalX(List<Integer> a, List<Integer> b) {
 		int lcmA = a.get(0);
-        for (int i = 1; i < a.size(); i++) {
-            lcmA = lcm(lcmA, a.get(i));
-        }
+		for (int i = 1; i < a.size(); i++) {
+			lcmA = lcm(lcmA, a.get(i));
+		}
 
-        int gcdB = b.get(0);
-        for (int i = 1; i < b.size(); i++) {
-            gcdB = gcd(gcdB, b.get(i));
-        }
+		int gcdB = b.get(0);
+		for (int i = 1; i < b.size(); i++) {
+			gcdB = gcd(gcdB, b.get(i));
+		}
 
-        int count = 0;
-        for (int i = lcmA, j = 2; i <= gcdB; i = lcmA * j, j++) {
-            if (gcdB % i == 0) {
-                count++;
-            }
-        }
-        System.out.println(count);
-        return count;
+		int count = 0;
+		for (int i = lcmA, j = 2; i <= gcdB; i = lcmA * j, j++) {
+			if (gcdB % i == 0) {
+				count++;
+			}
+		}
+		System.out.println(count);
+		return count;
 
 	}
 
