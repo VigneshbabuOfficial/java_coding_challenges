@@ -108,32 +108,54 @@ public class Practice {
 		System.out.println("----- Picking Numbers *** begins ------- ");
 		pickingNumbers();
 		System.out.println("----- Picking Numbers *** ends ------- ");
+
+		// ------------- MAY-02,2024 ----------------
+		// The Hurdle Race :
+		// https://www.hackerrank.com/challenges/the-hurdle-race/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- The Hurdle Race *** begins ------- ");
+		hurdleRace();
+		System.out.println("----- The Hurdle Race *** ends ------- ");
+	}
+
+	private static void hurdleRace() {
+		hurdleRace(1, Arrays.asList(1,2,3,3,2));
+		hurdleRace(4, Arrays.asList(1,6,3,5,2));
+		hurdleRace(7, Arrays.asList(2,5,4,5,2));
+	}
+
+	public static int hurdleRace(int k, List<Integer> height) {
+		int maxHeight = height.stream().mapToInt(Integer::intValue).max().getAsInt();
+		int requiredDose = Math.max(0, maxHeight-k); 
+		System.out.println(" requiredDose = "+requiredDose);
+		return requiredDose;
 	}
 
 	private static void pickingNumbers() {
-		pickingNumbers();
+//		pickingNumbers();
 
 	}
 
 	public static int pickingNumbers(List<Integer> a) {
 		// Create a frequency map to count the occurrence of each unique number
-        Map<Integer, Integer> frequencyMap = new HashMap<>();
-        for (int num : a) {
-            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
-        }
+		Map<Integer, Integer> frequencyMap = new HashMap<>();
+		for (int num : a) {
+			frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+		}
 
-        int maxLength = 0;
-        // Iterate through the frequency map
-        for (int num : frequencyMap.keySet()) {
-            int currentLength = frequencyMap.get(num); // Frequency of the current number
-            int nextLength = frequencyMap.getOrDefault(num + 1, 0); // Frequency of the next number (num + 1)
-            int totalLength = currentLength + nextLength; // Total length of subarray
-            // Update maxLength if the totalLength is greater
-            if (totalLength > maxLength) {
-                maxLength = totalLength;
-            }
-        }
-        return maxLength;
+		int maxLength = 0;
+		// Iterate through the frequency map
+		for (int num : frequencyMap.keySet()) {
+			int currentLength = frequencyMap.get(num); // Frequency of the current number
+			int nextLength = frequencyMap.getOrDefault(num + 1, 0); // Frequency of the next number (num + 1)
+			int totalLength = currentLength + nextLength; // Total length of subarray
+			// Update maxLength if the totalLength is greater
+			if (totalLength > maxLength) {
+				maxLength = totalLength;
+			}
+		}
+		return maxLength;
 	}
 
 	private static void getMoneySpent() {
