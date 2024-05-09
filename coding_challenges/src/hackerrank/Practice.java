@@ -117,18 +117,47 @@ public class Practice {
 		System.out.println("----- The Hurdle Race *** begins ------- ");
 		hurdleRace();
 		System.out.println("----- The Hurdle Race *** ends ------- ");
+
+		// ------------- MAY-09,2024 ----------------
+		// Utopian Tree :
+		// https://www.hackerrank.com/challenges/utopian-tree/problem?isFullScreen=true
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- Utopian Tree *** begins ------- ");
+		utopianTree();
+		System.out.println("----- Utopian Tree *** ends ------- ");
+		System.out.println(" ---------------------------------------------- ");
+		
+		// next prob : https://www.hackerrank.com/challenges/magic-square-forming/problem?isFullScreen=true
+	}
+
+	private static void utopianTree() {
+		utopianTree(5);
+	}
+
+	private static int utopianTree(int n) {
+		int height = 1;
+		for( int i=1; i<=n; i++ ) {
+			if( i%2 == 1 ) {
+				height *= 2;
+			}else {
+				height += 1;
+			}
+		}
+		System.out.println(" n = "+n+" height = "+height);
+		return height;
 	}
 
 	private static void hurdleRace() {
-		hurdleRace(1, Arrays.asList(1,2,3,3,2));
-		hurdleRace(4, Arrays.asList(1,6,3,5,2));
-		hurdleRace(7, Arrays.asList(2,5,4,5,2));
+		hurdleRace(1, Arrays.asList(1, 2, 3, 3, 2));
+		hurdleRace(4, Arrays.asList(1, 6, 3, 5, 2));
+		hurdleRace(7, Arrays.asList(2, 5, 4, 5, 2));
 	}
 
 	public static int hurdleRace(int k, List<Integer> height) {
 		int maxHeight = height.stream().mapToInt(Integer::intValue).max().getAsInt();
-		int requiredDose = Math.max(0, maxHeight-k); 
-		System.out.println(" requiredDose = "+requiredDose);
+		int requiredDose = Math.max(0, maxHeight - k);
+		System.out.println(" requiredDose = " + requiredDose);
 		return requiredDose;
 	}
 
