@@ -47,6 +47,40 @@ public class Practice {
 
 //		  #8 smallest substring without repeating character
 
+		// ------------- MAY-09,2024 ----------------
+		// Program to copy all elements of one array into another array :
+		// https://www.javatpoint.com/java-program-to-copy-all-elements-of-one-array-into-another-array
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- copy all elements of one array into another array *** begins ------- ");
+		copyArrayToArray();
+		System.out.println("----- copy all elements of one array into another array *** ends ------- ");
+		System.out.println(" ---------------------------------------------- ");
+
+		// Program to find the frequency of each element in the array :
+		// https://www.javatpoint.com/java-program-to-find-the-frequency-of-each-element-in-the-array
+		// Difficulty : EASY
+		// status : SUCCESS
+		System.out.println("----- Program to find the frequency of each element in the array : *** begins ------- ");
+		frequencyOfElementsInArray();
+		System.out.println("----- Program to find the frequency of each element in the array : *** ends ------- ");
+		System.out.println(" ---------------------------------------------- ");
+
+	}
+
+	private static void frequencyOfElementsInArray() {
+		
+		int[] arr = {1,2,8,3,2,2,2,5,1};
+		Map<Integer, Long> freqMap = Arrays.stream(arr).boxed().collect( Collectors.groupingBy(Integer::intValue, Collectors.counting()));
+		System.out.println(" arr = "+Arrays.toString(arr)+", freqMap = "+freqMap);
+	}
+
+	private static void copyArrayToArray() {
+		int[] arr1 = { 1, 2, 3, 4, 5, 6 };
+		int[] arr2 = arr1;
+		int[] arr3 = Arrays.copyOf(arr1, arr1.length);
+		System.out.println(" arr1 = " + Arrays.toString(arr1) + ", arr2 = " + Arrays.toString(arr2) + ", arr3 = "
+				+ Arrays.toString(arr3));
 	}
 
 	private static void findNonRepeatingLetter() {
@@ -200,8 +234,8 @@ public class Practice {
 
 	private static void convertDates() {
 		System.out.println("------------ convertDates -------------------");
-		String[] dates = { "17-Dec-80", "20-Feb-81", };
-		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MMM-yy");
+		String[] dates = { "17-Dec-1980", "20-Feb-1781", };
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 		for (String inputDate : dates) {
