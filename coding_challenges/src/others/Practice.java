@@ -65,7 +65,15 @@ public class Practice {
 		frequencyOfElementsInArray();
 		System.out.println("----- Program to find the frequency of each element in the array : *** ends ------- ");
 		System.out.println(" ---------------------------------------------- ");
+		
+		// practice method
+		practiceMethod();
 
+	}
+
+	private static void practiceMethod() {
+		System.out.println(" 1.0 / 0.0 = "+1.0 / 0.0);
+		System.out.println(" Double.isInfinite(1.0 / 0.0) = "+Double.isInfinite(1.0 / 0.0));
 	}
 
 	private static void frequencyOfElementsInArray() {
