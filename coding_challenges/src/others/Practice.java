@@ -14,6 +14,7 @@ public class Practice {
 
 	public static void main(String[] args) {
 
+	// TODO : 
 // ------------------ JAVATPOINT problems ----------------------- 
 		praciceArmstrongNumber();
 		practiceAutomorphicNumber();
@@ -23,6 +24,8 @@ public class Practice {
 		findLargest();
 		palidrome();
 		primeNumber();
+
+// -------------------- Logical practices --------------- //				
 		printPatterns();
 		convertDates();
 
@@ -81,6 +84,9 @@ public class Practice {
 		int[] arr = {1,2,8,3,2,2,2,5,1};
 		Map<Integer, Long> freqMap = Arrays.stream(arr).boxed().collect( Collectors.groupingBy(Integer::intValue, Collectors.counting()));
 		System.out.println(" arr = "+Arrays.toString(arr)+", freqMap = "+freqMap);
+		
+		Long numCount = Arrays.stream(arr).boxed().filter(n-> n == 2).collect(Collectors.counting());
+		System.out.println("numCount = "+numCount);
 	}
 
 	private static void copyArrayToArray() {
