@@ -48,16 +48,16 @@ public class StreamAPIPractice {
 
 		List<List<String>> fruits = Arrays.asList(Arrays.asList("apple", "mango"), Arrays.asList("banana"),
 				Arrays.asList("orange"));
-		List<String> fruitList = fruits.stream().flatMap(f -> f.stream()).collect(Collectors.toList());
+		List<String> fruitList = fruits.stream().flatMap(f -> f.stream()).toList();
 		System.out.println(" fruitList = " + fruitList);
 
 		List<List<Integer>> nestedList = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5, 6));
-		List<Integer> flattenedList = nestedList.stream().flatMap(List::stream).collect(Collectors.toList());
+		List<Integer> flattenedList = nestedList.stream().flatMap(List::stream).toList();
 		System.out.println(" flattenedList = " + flattenedList);
 
 		// ---------------------- FILTER ----------------------
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-		List<Integer> evenNumList = numbers.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+		List<Integer> evenNumList = numbers.stream().filter(n -> n % 2 == 0).toList();
 		System.out.println("evenNumList = " + evenNumList);
 
 		// ---------------------- PEEK ----------------------
@@ -210,13 +210,20 @@ public class StreamAPIPractice {
                 .mapToLong(Long::longValue)
                 .max()
                 .orElse(0);
+        
+        Long max = prodCount.values().stream().max(Long::compare).get();
 
         // Collect products with the maximum count
         List<String> mostOrderedProducts = prodCount.entrySet().stream()
                 .filter(entry -> entry.getValue() == maxCount)
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-        System.out.println("mostOrderedProducts = "+mostOrderedProducts+"("+maxCount+")");
+                .map(Map.Entry::getKey).toList();
+//                .collect(Collectors.toList());
+        System.out.println("mostly Ordered Products = "+mostOrderedProducts+"("+maxCount+")");
+        
+        
+        String[] str = new String[5];
+        String value = Optional.ofNullable(str[2]).orElse("DEFAULT_VAL");
+        System.out.println(value); // O/P : DEFAULT_VAL
 
 	}
 

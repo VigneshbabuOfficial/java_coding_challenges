@@ -1,10 +1,12 @@
 package others;
 
+import java.io.ObjectOutputStream.PutField;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -69,9 +71,6 @@ public class CollectionPractice {
 			entry.getValue();
 		}
 		
-		
-		
-		
 		ArrayList<Student> al = new ArrayList<Student>();
 		al.add(new Student(101, "Vijay", 23));
 		al.add(new Student(106, "Ajay", 27));
@@ -103,6 +102,7 @@ public class CollectionPractice {
 		Collections.sort(al,cm1);
 		Collections.sort(al,cm2);
 		System.out.println(al);
+		
 	}
 
 }
@@ -300,3 +300,7 @@ class ListExt implements List {
 	}
 
 }
+
+
+
+
