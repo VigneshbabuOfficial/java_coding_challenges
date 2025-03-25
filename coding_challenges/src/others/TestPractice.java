@@ -19,13 +19,13 @@ public class TestPractice {
 		Integer[] numArr = new Integer[] { 1, 2, 3, 4, 5 };
 		// feature 1: we cant add / remove elements from the List
 		List<Integer> numList = Arrays.asList(numArr);
-		// numList.add(7);
-		// Exception in thread "main" java.lang.UnsupportedOperationException
+//		numList.add(7);
+//		 Exception in thread "main" java.lang.UnsupportedOperationException
 
 		// feature 2: List instance will get same effect if the source is modified
-		System.out.println(" numList.get(1) = " + numList.get(1)); // numList.get(0) = 2
+		System.out.println(" numList.get(1) = " + numList.get(1)); // numList.get(1) = 2
 		numArr[1] = 2000;
-		System.out.println(" numList.get(1) = " + numList.get(1)); // numList.get(0) = 2000
+		System.out.println(" numList.get(1) = " + numList.get(1)); // numList.get(1) = 2000
 
 		// feature 3: its mutable so we can update the List elements
 		numList.set(2, 9999);

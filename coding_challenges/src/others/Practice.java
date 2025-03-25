@@ -221,21 +221,27 @@ public class Practice {
 		String[] wordArr = paragraph.split(" ");
 		System.out.println(Arrays.toString(wordArr));
 
+		// word with occurrence count
 		Map<String, Long> wordMap = Arrays.stream(wordArr)
 				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
 		System.out.println(wordMap);
 
+		// most common word
 		String commonWord = wordMap.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey)
 				.orElse(null);
 		System.out.println("most common word = " + commonWord);
 
+		// most common word count
 		Long mostCommonWordCount = wordMap.entrySet().stream().max(Map.Entry.comparingByValue())
 				.map(Map.Entry::getValue).orElse(0L);
+		
+		// most common word list
 		List<String> mostCommonWordList = wordMap.entrySet().stream().filter(a -> a.getValue() == mostCommonWordCount)
 				.map(Map.Entry::getKey).distinct().toList();
 		System.out.println("most common word count = " + mostCommonWordCount);
 		System.out.println("most common word list = " + mostCommonWordList);
 
+		// second most common word
 		String secondCommonWord = wordMap.entrySet().stream()
 				.sorted(Map.Entry.<String, Long>comparingByValue().reversed()).skip(1).findFirst()
 				.map(Map.Entry::getKey).orElse(null);
@@ -1095,7 +1101,7 @@ public class Practice {
 		boolean isArmstrongNum = checkIfArmstrong(num);
 		System.out.println(num + " Armstrong number status is " + isArmstrongNum);
 
-		int limit = 1000;
+		int limit = 10000;
 		List<Integer> armstrongNumbs = new ArrayList<>();
 		for (int i = 1; i <= limit; i++) {
 			if (checkIfArmstrong(i))
