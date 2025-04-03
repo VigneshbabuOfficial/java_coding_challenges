@@ -578,19 +578,6 @@ public class Practice {
 		System.out.println("------------ Diamond With Numbers -------------------");
 		printDiamondWithNumbers(8);
 
-// @formatter:off
-/*
-
-1 
-2 1 
-3 2 1 
-4 3 2 1 
-5 4 3 2 1
-
-*/
-// @formatter:on
-		System.out.println("--- Right Triangle With Numbers Pattern - 1 - reverse ------");
-		printRightTriangleWithNumberPattern_1_reverse(6);
 
 		// diff a++ vs ++a
 		System.out.println("------------ diff a++  vs  ++a -------------------");
