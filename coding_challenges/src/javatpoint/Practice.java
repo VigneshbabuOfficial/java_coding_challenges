@@ -9,6 +9,72 @@ public class Practice {
 
 		printPatterns();
 
+		// -------------------- Logical problems --------------- //
+		fibonacci_series();
+		armstrong_number_problems();
+		factorial();
+		palindrome();
+		primeNumber();
+
+//				findGCD();
+//				findLargest();
+
+		// check few more javatpoint problems
+		// Java Array Programs
+		// Java String Programs
+		// Java Searching and Sorting Programs
+		//
+
+		// ------------------- frequently asked problems ----------------- //
+//				DONE	#1 find the highest word occurrence in a given paragraph
+		/* findHighestOccurenceOfAword(); */
+//				DONE	#2 find the least word occurrence in a given paragraph
+		/* findLeastWordOccurence(); */
+		// ------------- APR-02, 2024 ----------------
+//				DONE	#3 find the longest words in a given paragraph
+		/* findLongestWordInParagraph(); */
+//				DONE	#4 finding the smallest words in a given paragraph
+		/* findSmallestWordInParagraph(); */
+		// ------------- APR-03, 2024 ----------------
+//				DONE    #5 find the most repeating letter in a word
+		/* findMostRepeatingLetter(); */
+//				DONE	#6 find the least / non repeating letter in a word
+		/* findNonRepeatingLetter(); */
+//				DONE	#6.1 find the second least / non repeating letter in a word
+
+//					  #7 longest substring without repeating character
+
+//					  #8 smallest substring without repeating character
+
+		// ------------- MAY-09,2024 ----------------
+		// Program to copy all elements of one array into another array :
+		// https://www.javatpoint.com/java-program-to-copy-all-elements-of-one-array-into-another-array
+		// Difficulty : EASY
+		// status : SUCCESS
+		/*
+		 * System.out.
+		 * println("----- copy all elements of one array into another array *** begins ------- "
+		 * ); copyArrayToArray(); System.out.
+		 * println("----- copy all elements of one array into another array *** ends ------- "
+		 * ); System.out.println(" ---------------------------------------------- ");
+		 */
+
+		// Program to find the frequency of each element in the array :
+		// https://www.javatpoint.com/java-program-to-find-the-frequency-of-each-element-in-the-array
+		// Difficulty : EASY
+		// status : SUCCESS
+		/*
+		 * System.out.
+		 * println("----- Program to find the frequency of each element in the array : *** begins ------- "
+		 * ); frequencyOfElementsInArray(); System.out.
+		 * println("----- Program to find the frequency of each element in the array : *** ends ------- "
+		 * ); System.out.println(" ---------------------------------------------- ");
+		 */
+
+//					findHighestOccurenceOfAword();
+//			        findLeastWordOccurence();
+//			        findLongestWordInParagraph();
+
 	}
 
 	private static void printPatterns() {
@@ -70,68 +136,6 @@ public class Practice {
 
 		print_diamond_numbers(10);
 
-		// -------------------- Logical problems --------------- //
-		fibonacci_series();
-		armstrong_number_problems();
-		factorial();
-		palindrome();
-		primeNumber();
-
-//		findGCD();
-//		findLargest();
-
-		// check few more javatpoint problems
-
-		// ------------------- frequently asked problems ----------------- //
-//		DONE	#1 find the highest word occurrence in a given paragraph
-		/* findHighestOccurenceOfAword(); */
-//		DONE	#2 find the least word occurrence in a given paragraph
-		/* findLeastWordOccurence(); */
-		// ------------- APR-02, 2024 ----------------
-//		DONE	#3 find the longest words in a given paragraph
-		/* findLongestWordInParagraph(); */
-//		DONE	#4 finding the smallest words in a given paragraph
-		/* findSmallestWordInParagraph(); */
-		// ------------- APR-03, 2024 ----------------
-//		DONE    #5 find the most repeating letter in a word
-		/* findMostRepeatingLetter(); */
-//		DONE	#6 find the least / non repeating letter in a word
-		/* findNonRepeatingLetter(); */
-//		DONE	#6.1 find the second least / non repeating letter in a word
-
-//			  #7 longest substring without repeating character
-
-//			  #8 smallest substring without repeating character
-
-		// ------------- MAY-09,2024 ----------------
-		// Program to copy all elements of one array into another array :
-		// https://www.javatpoint.com/java-program-to-copy-all-elements-of-one-array-into-another-array
-		// Difficulty : EASY
-		// status : SUCCESS
-		/*
-		 * System.out.
-		 * println("----- copy all elements of one array into another array *** begins ------- "
-		 * ); copyArrayToArray(); System.out.
-		 * println("----- copy all elements of one array into another array *** ends ------- "
-		 * ); System.out.println(" ---------------------------------------------- ");
-		 */
-
-		// Program to find the frequency of each element in the array :
-		// https://www.javatpoint.com/java-program-to-find-the-frequency-of-each-element-in-the-array
-		// Difficulty : EASY
-		// status : SUCCESS
-		/*
-		 * System.out.
-		 * println("----- Program to find the frequency of each element in the array : *** begins ------- "
-		 * ); frequencyOfElementsInArray(); System.out.
-		 * println("----- Program to find the frequency of each element in the array : *** ends ------- "
-		 * ); System.out.println(" ---------------------------------------------- ");
-		 */
-
-//			findHighestOccurenceOfAword();
-//	        findLeastWordOccurence();
-//	        findLongestWordInParagraph();
-
 	}
 
 	private static void primeNumber() {
@@ -146,11 +150,13 @@ public class Practice {
 	private static boolean isPrimeNumber(int n) {
 		boolean isPrime = true;
 
-		if (n < 2) return false;
-	    if (n == 2) return true;
-	    if (n % 2 == 0) return false;
-	    
-		
+		if (n < 2)
+			return false;
+		if (n == 2)
+			return true;
+		if (n % 2 == 0)
+			return false;
+
 		for (int i = 3; i < n; i++) {
 			if (n % i == 0) {
 				isPrime = false;
