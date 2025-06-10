@@ -16,9 +16,9 @@ public class StreamAPIPractice {
 	public static void main(String[] args) {
 
 		// Creating Streams :
-//		List<String> myList = Arrays.asList("apple", "banana", "orange");
-//		Stream<String> sequentialStream = myList.stream();
-//		Stream<String> parallelStream = myList.parallelStream();
+		List<String> myList = Arrays.asList("apple", "banana", "orange");
+		Stream<String> sequentialStream = myList.stream();
+		Stream<String> parallelStream = myList.parallelStream();
 
 		// When to Use Which?
 		// Sequential Stream: Use when working with small datasets or operations that
@@ -39,6 +39,7 @@ public class StreamAPIPractice {
 		Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 		Function<Integer, Integer> triple = (value) -> value * 3;
 		Stream<Integer> mappedStream = integerStream.map(triple);
+		mappedStream.forEach(System.out::print);
 
 		// ------------- FLATMAP -------------
 		List<String> names = Arrays.asList("john", "emma");
@@ -153,7 +154,7 @@ public class StreamAPIPractice {
 		System.out.println("groupByAge = " + groupByAge);
 
 		String paragraph = "Lorem ipsum dolor sit amet consectetur dolor adipiscing elit ipsum";
-		String[] wordArr = paragraph.split(" ");
+		String[] wordArr = paragraph.replaceAll(" ", "").split(" ");
 		Map<String, Long> wordMap = Arrays.stream(wordArr)
 				.collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
 		System.out.println(wordMap);

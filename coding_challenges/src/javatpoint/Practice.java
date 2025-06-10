@@ -227,7 +227,7 @@ public class Practice {
 		boolean isArmstrongNum = armstrong_number(n);
 		System.out.println(n + " is" + (isArmstrongNum ? " an Armstrong number " : " not a Armstrong"));
 		n = 153;
-		armstrong_number(n);
+		isArmstrongNum = armstrong_number(n);
 		System.out.println(n + " is" + (isArmstrongNum ? " an Armstrong number " : " not a Armstrong"));
 
 		List<Integer> armstrongNumList = IntStream.rangeClosed(1, 1000000).filter(Practice::armstrong_number).boxed()
