@@ -132,8 +132,8 @@ public class StreamAPIPractice {
 		System.out.println("evenInts = " + evenInts);
 
 		// mapToInt -> sum, average, count
-//		int sum = numbers.stream().filter(n-> n%2 ==0 ).mapToInt(Integer::intValue).sum();
-//		int sum = numbers.stream().filter(n -> n % 2 == 0).mapToInt(i -> i).sum();
+		// int sum = numbers.stream().filter(n-> n%2 ==0 ).mapToInt(Integer::intValue).sum();
+		// int sum = numbers.stream().filter(n -> n % 2 == 0).mapToInt(i -> i).sum();
 		int sum = numbers.stream().filter(n -> n % 2 == 0).mapToInt(i -> i).reduce(0, Integer::sum);
 		System.out.println("sum = " + sum);
 		double avg = numbers.stream().filter(n -> n % 2 == 0).mapToInt(i -> i).average().orElse(0);
