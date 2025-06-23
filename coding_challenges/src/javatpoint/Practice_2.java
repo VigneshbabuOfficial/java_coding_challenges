@@ -32,6 +32,8 @@ public class Practice_2 {
 
         findLargest();
 
+        // ====================================================== //
+
         // ----------------- JavaTPoint String Programs -----------------
         // Java Program to divide a string in 'N' equal parts.
         // TODO
@@ -47,18 +49,25 @@ public class Practice_2 {
         // Java program to find the duplicate characters in a string
         // Java Program to find the frequency of characters
         charFromString();
+        // find non-repeating character in a string
+        nonRepeatingChracter();
 
+        // find non-repeating character in a string
+        nonRepeatingWord();
         // Java Program to find maximum and minimum occurring word in a string.
         // Java Program to find the largest and smallest word in a string.
         // Java program to find the duplicate words in a string
         removeSpecialCharsFromString();
         wordFromString();
+
         // Java Program to Count the Total Number of Punctuation Characters Exists in a String
         countSpecialChar();
         // Java Program to swap two string variables without using third or temp variable.
         swapString();
         // Reverse a String
         reverseString();
+
+        // ====================================================== //
 
         // ------------------------ JavaTPoint Array Programs --------------------------
         // Java Program to find the frequency of each element in the array
@@ -88,16 +97,41 @@ public class Practice_2 {
         // Java Program to sort the elements of an array in descending order
         arrayDescending();
 
+        // ====================================================== //
+
         // TODO
         // --------------------- JavaTPoint Searching and Sorting Programs ---------------------
 
         // ------------------ Stream API methods ( collect , collectors ) --------------------
         streamAPIMethods();
 
-        // all interview probs
+        // all previous interview probs
 
         // hackerrank probs
 
+    }
+
+    private static void nonRepeatingWord() {
+        System.out.println("------- nonRepeatingWord ------ ");
+        String paragraph = "Lorem ipsum! dolor sit. amet consectetur, dolor adipiscing elit ipsum? donsectetur";
+        String removedSpecChar = paragraph.replaceAll("[!,.:;?\\-'\"]", "").toLowerCase();
+        System.out.println(" removedSpecChar = "+removedSpecChar);
+        String nonRepeatedString = Arrays.stream(removedSpecChar.split(" ")).map(String::toLowerCase).filter(a -> removedSpecChar.indexOf(a) == removedSpecChar.lastIndexOf(a)).findFirst().orElse(null);
+        System.out.println(" nonRepeatedString = "+nonRepeatedString);
+        List<String> list = Arrays.stream(removedSpecChar.split(" ")).map(String::toLowerCase).filter(a -> removedSpecChar.indexOf(a) == removedSpecChar.lastIndexOf(a)).toList();
+        System.out.println(list);
+
+    }
+
+    private static void nonRepeatingChracter() {
+        System.out.println("------- nonRepeatingChracter ------ ");
+        String str = "swiss";
+        Character nonRepeatChar = str.chars().mapToObj(a -> (char) a).filter(a -> str.indexOf(a) == str.lastIndexOf(a)).findFirst().orElse(null);
+        System.out.println(nonRepeatChar);
+
+        // find all non-repeating characters in a string
+        List<Character> list = str.chars().mapToObj(a -> (char) a).filter(a -> str.indexOf(a) == str.lastIndexOf(a)).toList();
+        System.out.println(list);
     }
 
     private static void streamAPIMethods() {
@@ -513,18 +547,20 @@ public class Practice_2 {
         System.out.println("------- wordFromString ------ ");
         String paragraph = "Lorem ipsum! dolor sit. amet consectetur, dolor adipiscing elit ipsum? donsectetur";
         String removedSpecChar = paragraph.replaceAll("[!,.:;?\\-'\"]", "");
-        Map<String, Long> wordMap = Arrays.stream(removedSpecChar.split(" ")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map<String, Long> wordMap = Arrays.stream(removedSpecChar.split(" ")).map(String::toLowerCase).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(wordMap);
 
         // minimum occurrence word
         Long minWordCount = wordMap.entrySet().stream().min(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
         List<String> minWords = wordMap.entrySet().stream().filter(a -> a.getValue().equals(minWordCount)).map(Map.Entry::getKey).toList();
         System.out.println("minWords = " + minWords);
+        // alternate way - nonRepeatingWord()
 
         // maximum occurrence words
         Long maxWordCount = wordMap.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getValue).orElse(null);
         List<String> maxWords = wordMap.entrySet().stream().filter(a -> a.getValue().equals(maxWordCount)).map(Map.Entry::getKey).toList();
         System.out.println("maxWords = " + maxWords);
+        // alternate way - nonRepeatingWord()
 
         // largest word in a string
         Map<Integer, List<String>> wordsLengthMap = wordMap.keySet().stream().collect(Collectors.groupingBy(String::length));
@@ -539,6 +575,7 @@ public class Practice_2 {
         // duplicate words
         List<String> duplicateWords = wordMap.entrySet().stream().filter(a -> a.getValue() > 1L).map(Map.Entry::getKey).toList();
         System.out.println("duplicateWords = " + duplicateWords);
+        // alternate way - nonRepeatingWord()
 
     }
 
@@ -555,10 +592,12 @@ public class Practice_2 {
         // minimum occurred character
         Map.Entry<String, Long> minChar = wordMapObj.entrySet().stream().min(Map.Entry.comparingByValue()).orElse(null);
         System.out.println("minimum occurred char = " + minChar);
+        // alternate way - nonRepeatingChracter();
 
         // duplicate characters
         List<String> list = wordMapObj.entrySet().stream().filter(a -> a.getValue() > 1L).map(Map.Entry::getKey).toList();
         System.out.println("duplicate characters = " + list);
+        // alternate way - nonRepeatingChracter();
 
         // frequency of characters = wordMapObj
         Map<Character, Long> strMap = str.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
