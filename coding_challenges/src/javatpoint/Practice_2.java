@@ -137,6 +137,11 @@ public class Practice_2 {
     private static void streamAPIMethods() {
         System.out.println("------- streamAPIMethods ------ ");
 
+	// what is Stream API?
+	// Stream API is a new feature to process the collections of data with minimum boiler-palte code. 
+	// It supports funtional style programming like using lampda expression, method reference and supports filter, map, sorting in a declarative pipeline-style way.
+	// So It makes code cleaner, shorter, and easier to read.
+	    
         // Creating Streams :
         List<String> myList = Arrays.asList("apple", "banana", "orange");
         Stream<String> sequentialStream = myList.stream();
